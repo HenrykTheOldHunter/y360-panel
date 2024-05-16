@@ -1,0 +1,86 @@
+.search-block{
+	display: inline-block;
+	padding: 1%;
+	background: #E8E8E8;
+    border-radius: 10px;
+}
+.search-field, .search-button{
+	display: inline-block;
+}
+.list{
+	margin-top: 2%;
+    list-style: none;
+    background: #E8E8E8;
+    border-radius: 10px;
+}
+.list-item-container, .bio, .modal-bio, .main-department, .main-group, .del{
+	padding: 1%;
+}
+.list-item-container:hover, .bio:hover, .main-department:hover, .main-group:hover{
+	background: white;
+	cursor: pointer;
+}
+.drop, .department-name, .group-name, .dropdown{
+	display: inline;
+	font-size: 24px;
+	text-align: center;
+	cursor: pointer;
+}
+.menu, .add, .del{
+	float: right;
+}
+.menu img, .add img, .del img{
+	width: 35px;
+	background: #E8E8E8;
+}
+.bio-avatar, .bio-name, .modal-bio-avatar, .modal-bio-name{
+	display: inline;
+}
+.bio-container, .del{
+	display: inline-block;
+}
+.dropdown-content{
+	display: none;
+	float: right;
+	right: 100px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+	background-color: #ddd
+}
+.show {
+	display:block;
+}
+.picked{
+	background-color: white;
+	border-radius: 10px;
+}
+.clicked{
+}
+.highlight {
+  background-color: yellow;
+}
+.list-item1, .list-item1-user{
+	padding-left: 20px;
+}
+.list-item2, .list-item2-user{
+	padding-left: 40px;
+}
+.list-item3, .list-item3-user{
+	padding-left: 60px;
+}
+#dropdown-delete a{
+	color: red;
+}
+.errord{
+	display: none;
+	color: red;
+}

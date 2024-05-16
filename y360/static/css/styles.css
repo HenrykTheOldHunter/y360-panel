@@ -1,0 +1,111 @@
+body{
+    height:100%;
+    min-height:100%;
+    background: #f5f2f2;
+    margin: 0 auto;
+	font-family: 'Roboto Slab', serif;
+}
+button{
+    cursor: pointer;
+}
+td, #login-auth{
+	font-size: 150%; 
+}
+.header{
+	min-width: 100%;
+}
+.header-container{
+	display: inline-flex;
+	justify-content: space-between;
+	align-content: center;
+    background: white;
+	min-width: 100%;
+}
+.header-item{
+	padding: 1%;
+	min-width: 125px;
+}
+.user-logo, .user-name{
+	display: inline-block;
+}
+.sidebar-nav{
+    display: inline-block;
+    min-width: 200px;
+	width: 20%;
+    padding-right: 2%;
+    vertical-align: top;  
+}
+.sidebar-nav-container{
+    background: white;
+	border-radius: 0 0 10px 10px;
+}
+.sidebar-nav-item{
+    margin: 0;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 18px;
+    list-style: none;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sidebar-nav-ul{
+    margin: 0 auto;
+}
+.sidebar-nav-ul a{
+    color: black;
+    outline-color: transparent;
+    text-decoration: none;
+}
+.sidebar-nav-ul a:visited{
+    color: transparent;
+    outline-color: transparent;
+    text-decoration: none;
+}
+.sidebar-nav-item:hover{
+    background: #E8E8E8;
+    scale: 1.05;
+}
+.img{
+	width: 20px;
+}
+.main-container {
+    display: inline-block;
+    margin-top: 2%;
+    box-sizing: border-box;
+    border: solid transparent;
+    border-radius: 15px;
+	width: 75%;
+	min-width: 1000px;
+	font-size: 80%;
+}
+.content-container {
+    padding: 15px;
+    background: white;
+    box-sizing: border-box;
+    border: solid transparent;
+    border-radius: 15px;
+	min-width: 1000px;
+}
+.error{
+	border: 1px solid red;
+}
+.error-text{
+	color: red;
+}
+.warning-text{
+    color: #FF7518;
+}
+.modal-content{
+	min-width: 450px;
+}
+.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	
+}

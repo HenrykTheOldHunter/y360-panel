@@ -1,0 +1,94 @@
+.modal-header, modal-body, .modal-dialog{
+    border-radius: 20px;
+}
+
+.cards{
+    padding-top: 20px;
+}
+.card-item{
+    padding: 10px;
+    margin: 10px;
+    background: #E8E8E8;
+    border-radius: 10px;
+
+}
+.card-title{
+    text-align: center;
+    color: #787A77;
+    font-size: 16px;
+    text-decoration: bold;
+    margin: 0;
+    padding: 0;
+}
+.card-body{
+    margin: 0;
+    padding: 0;
+}
+.avatar img{
+    width: 5em;
+    border-radius: 100px;
+}
+.modal-name{
+    font-size: 24px;
+}
+.modal-name, .delete-button{
+    display: inline-block;
+}
+#modal-button{
+    padding-left: 70%;
+}
+#modal-button button, .buttons button{
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+}
+.modal-title{
+    text-align: center;
+    font-size: 24px;
+}
+.yes-button, .no-button, .return-button, .change-button, .drop-button, .enable-button{
+    display: inline-block;
+}
+.modal-bio{
+    cursor: pointer;
+}
+
+
+/*ver2*/
+.tabs {
+    width: 100%; 
+    padding: 0px; 
+    margin: 0 auto; 
+}
+.tab{
+    display: inline-block;
+}
+.tabs input, #group-tab {
+    display: none; 
+}
+.tabs label:not(.all label), .all input:checked + label {
+    padding: 7px;
+    margin: 0 -5px -1px 0;
+    text-align: center;
+    color: #666666;
+    border: 1px solid #C0C0C0;
+    cursor: pointer;
+}
+.tabs input:checked:not(.all input:checked) + label, .all input + label {
+    padding: 7px;
+    margin: 0 -5px -1px 0;
+    text-align: center;
+    color: #000000;
+    border: 1px solid #C0C0C0;
+    background: #E0E0E0;
+}
+.union-container, #department-container, #group-container{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.message{
+    display: none;
+}
