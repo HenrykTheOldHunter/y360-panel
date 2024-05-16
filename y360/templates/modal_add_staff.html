@@ -1,0 +1,81 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_add_staff.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+    <a>Добавить сотрудника</a>
+</div>
+<div class="cards">
+    <div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Фамилия</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-check" type="text" id="last" name="last" value=""/>
+            </div>
+        </div>
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Имя</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-check" type="text" id="first" name="first" value=""/>
+            </div>
+        </div>
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Отчество</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-not-check" type="text" id="middle" name="middle" value=""/>
+            </div>
+       </div>  
+    </div>
+    <div class="card-item">
+        <div class="card-item-title">
+            <a>Почта</a>
+        </div>
+        <div class="card-item-body">
+            <input class="input-check" type="text" id="email" name="email" value=""/>
+        </div>
+    </div>
+	<div class="card-item">
+        <div class="card-item-title">
+            <a>Логин</a>
+        </div>
+        <div class="card-item-body">
+            <input class="input-check" type="text" id="login" name="login" value=""/>
+        </div>
+		<div class="card-item-title">
+            <a>Пароль</a>
+        </div>
+        <div class="card-item-body">
+            <input class="input-check" type="text" id="password" name="password" value=""/>
+        </div>
+    </div>
+    <div class="card-item">
+        <div class="card-item-block" id="modal-select">
+            <div class="card-item-title">
+                <a>Подразделение</a>
+            </div>
+            <div class="card-item-body">
+                <select class="select" name="department" id="department">
+						{% for department in departments %}
+                        <option value="{{ department.0 }}">{{ department.1 }}</option>
+						{% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card-item-block" id="modal-button">
+        <div class="card-item-body">
+            <button class="modal-add-button" id="modal-add-button">Добавить</button>
+        </div>
+    </div>
+	<div id="error-block">
+	
+	</div>
+</div>
+

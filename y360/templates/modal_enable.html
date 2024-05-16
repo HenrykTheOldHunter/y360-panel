@@ -1,0 +1,17 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_enable.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/return-button.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Сейчас аккаунт {{ user }} {{ status }}. {{ action }}?</a>
+</div>
+<div class="buttons">
+	<div class="yes-button">
+		<button id="enable-button-result" data-url="{% url 'enable-data' id %}" data-id="{{ id }}">>Да</button>
+	</div>
+	<div class="return-button">
+		<button id="return-button" data-url="{% url 'modal' id %}">Отмена</button>
+	</div>	
+</div>

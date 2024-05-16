@@ -1,0 +1,93 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_paste.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Скопировать сотрудников в {{ typeFormat }} {{ unit.1 }}</a>
+</div>
+{% if type == "department" %}
+    <div class="warning-text">
+        <a>Внимание! При копировании в подразделения сотрудники будут перенесены и удалены из исходного!</a>
+    </div>
+{% endif %}
+<div class="tabs">
+    <div class="tab">
+        <input type="radio" id="paste-from-department" name="tab-radio" value="" checked/>
+        <label for="paste-from-department">Из подразделения</label>
+    </div>
+    <div class="tab">
+        <input type="radio" id="paste-from-group" name="tab-radio" value=""/>
+        <label for="paste-from-group">Из группы</label>
+    </div>
+    <div class="cards">
+        <div class="card-item" id="department-tab">
+            <div class="card-item-block">
+                <div class="card-item-body">
+                    <a>Выберите подразделение:</a>
+                    <select class="select" name="department" id="department" data-type="{{ type }}" data-for="{{ unit.0 }}">
+                        <option value="-1">----------------</option>
+                        {% for department in departments %}
+                        <option value="{{ department.0 }}">{{ department.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="all" id="all-department-block">
+                        <input type="checkbox" id="all-department" name="all-department" checked>
+                        <label for="all-department">Выбрать всех сотрудников</label>
+                    </div>
+                    <div id="department-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-item" id="group-tab">
+            <div class="card-item-block">
+                <div class="card-item-body">
+                    <a>Выберите группу:</a>
+                    <select class="select" name="group" id="group" data-type="{{ type }}" data-for="{{ unit.0 }}">
+                        <option value="-1">----------------</option>
+                        {% for group in groups %}
+                        <option value="{{ group.0 }}">{{ group.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="all" id="all-group-block">
+                        <input type="checkbox" id="all-group" name="all-group" checked>
+                        <label for="all-group">Выбрать всех сотрудников</label>
+                    </div>
+                    <div id="group-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="buttons">
+    {% if type == "department" %}
+        <div class="yes-button">
+            <button id="yes-button" data-url="{% url 'paste-department' unit.0 %}">Подтвердить</button>
+        </div>
+	    <div class="return-button">
+		    <button id="return-button">Отмена</button>
+        </div>
+    {% else %}
+        <div class="yes-button">
+            <button id="yes-button" data-url="{% url 'paste-group' unit.0 %}">Подтвердить</button>
+        </div>
+        <div class="return-button">
+            <button id="return-button">Отмена</button>
+        </div>
+    {% endif %}		
+</div>
+<div class="message">
+    <a>Пожалуйста, подождите... <img class="img" src="{% static 'ico/loading.gif' %}"></img></a>
+</div>
+<div class="error-text">
+</div>
+
+<style>
+    #all-department-block, #all-group-block{
+        display: none;
+        padding-top: 1%;
+    }
+    .cards{
+        padding-top: 0;
+    }
+</style>

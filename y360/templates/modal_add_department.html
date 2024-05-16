@@ -1,0 +1,49 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_add_department.js' %}"></script>
+{% endblock %}
+
+<div class="modal-title">
+    <a>Создать подразделение</a>
+</div>
+<div class="cards">
+    <div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Название</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-check-add" type="text" id="department-name-add" name="department-name-add" value=""/>
+            </div>
+        </div>
+	</div>
+	<div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Описание</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-not-check-add" type="text" id="department-description-add" name="department-description-add" value=""/>
+            </div>
+        </div>
+	</div>
+	<div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Рассылка</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-not-check-add" type="text-add" id="department-label-add" name="department-label-add" value=""/>
+				<a>{{ domain }}</a>
+            </div>
+        </div>
+	</div>
+	<div class="card-item-block" id="modal-button">
+        <div class="card-item-body">
+            <button class="modal-add-department-button" id="modal-add-department-button" data-url="{% url 'add-department-data' id %}">Создать</button>
+        </div>
+    </div>
+	<div id="error-block">
+</div>
+</div>

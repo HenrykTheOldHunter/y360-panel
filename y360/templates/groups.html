@@ -1,0 +1,117 @@
+{% extends "generic.html" %}
+
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/modal.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/multilevel_list.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/multilevel_list.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modal_groups.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/union_lookup.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/staff_lookup.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/drop_lookup.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="name">
+    <h1>Groups list</h1>    
+</div>
+<div class="count">
+    <h3>Количество групп: {{ total }}</h3>
+</div>
+<div class="search-blocks">
+	<div class="search-block">
+		<div class="search-title">
+			<a><b>Поиск по группам</b></a>
+		</div>
+		<div class="search-field">
+			<input type="text" id="union-lookup-input" placeholder="..." />
+		</div>
+		<div class="search-button">
+			<button id="union-lookup-button" data-url="{% url 'group-lookup'%}"><img class="img" src="{% static 'ico/search.png' %}"/></button>
+		</div>
+	</div>
+	<div class="search-block">
+		<div class="search-title">
+			<a><b>Поиск по сотрудникам</b></a>
+		</div>
+		<div class="search-field">
+			<input type="text" id="staff-lookup-input" placeholder="..." />
+		</div>
+		<div class="search-button">
+			<button id="staff-lookup-button" data-url="{% url 'group-staff-lookup'%}"><img class="img" src="{% static 'ico/search.png' %}"/></button>
+		</div>
+	</div>
+	<div class="search-block">
+		<div class="search-button">
+			<button id="drop-lookup-button" data-url="{% url 'groups'%}">Сбросить фильтры</button>
+		</div>
+	</div>
+</div>
+<div class="list">
+	<div class="main-group">
+		<div class="group-name">
+			<a>Группы организации</a>
+		</div>
+		<div class="dropdown">
+			<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-group' 0 %}">
+				<img class="img" src="{% static 'ico/add.png' %}"></img>
+			</div>
+		</div>
+	</div>	
+    {% for group in groups %}
+    <div class="list-item0" id="{{ group.0 }}" data-target="create" data-url="{% url 'group-create' group.0 %}">
+		<div class="list-item-container">
+			<div class="drop">
+				<img class="img" id="drop-ico" src="{% static 'ico/drop-close.png' %}"></img>
+			</div>
+			<div class="group-name">
+				<a>{{ group.1 }}</a>
+			</div>
+			<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-group' group.0 %}">
+				<img class="img" src="{% static 'ico/add.png' %}"></img>
+			</div>
+			<div class="menu">
+				<img class="img" id="menu-button" src="{% static 'ico/menu.png' %}"></img>
+			</div>
+		</div>
+		<div class="dropdown">
+			<div class="dropdown-content" id="dropdown-content">
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-staff-group' group.0%}">
+					<a>Добавить сотрудников</a>
+				</div>
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'paste' group.0%}" data-type="group">
+					<a>Вставить сотрудников</a>
+				</div>
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'change-group' group.0%}">
+					<a>Изменить параметры</a>
+				</div>
+				<div class="dropdown-content-item" id="dropdown-delete" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-group' group.0%}">
+					<a>Удалить</a>
+				</div>
+			</div>
+		</div>
+    </div>
+	{% endfor %}
+</div>
+<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="connector">
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

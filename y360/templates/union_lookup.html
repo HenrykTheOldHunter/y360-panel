@@ -1,0 +1,147 @@
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/multilevel_list.css' %}" />
+{% endblock %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/mark.js' %}"></script>
+{% endblock %}
+{% if main.0 == "department" %}
+<div class="main-department">
+	<div class="department-name">
+		<a>{{ main.1.1 }}</a>
+	</div>
+	<div class="dropdown">
+		<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-department' main.1.0 %}">
+			<img class="img" src="{% static 'ico/add.png' %}"></img>
+		</div>
+	</div>
+</div>	
+{% endif %}
+{% if main.0 == "group" %}
+<div class="main-group">
+	<div class="group-name">
+		<a>Группы организации</a>
+	</div>
+	<div class="dropdown">
+		<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-group' 0 %}">
+			<img class="img" src="{% static 'ico/add.png' %}"></img>
+		</div>
+	</div>
+</div>	
+{% endif %}
+{% for union in result %}
+	{% for key, value in union.items %}
+		{% if value.0 == "department" %}
+			{% if value.3 == "clicked" %}
+			<div class="{{ value.1 }} clicked" id={{ key }} data-target="create" data-url="{% url 'department-create' key %}">
+			{% else %}
+			<div class="{{ value.1 }}" id={{ key }} data-target="create" data-url="{% url 'department-create' key %}">
+			{% endif %}
+				<div class="list-item-container">
+					<div class="drop">
+						{% if value.3 == "clicked" %}
+						<img class="img" id="drop-ico" src="{% static 'ico/drop-open.png' %}"></img>
+						{% else %}
+						<img class="img" id="drop-ico" src="{% static 'ico/drop-close.png' %}"></img>
+						{% endif %}
+					</div>
+					<div class="department-name">
+						<a>{{ value.2 }}</a>
+					</div>
+					<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-department' key %}">
+						<img class="img" src="{% static 'ico/add.png' %}"></img>
+					</div>
+					<div class="menu">
+						<img class="img" id="menu-button" src="{% static 'ico/menu.png' %}"></img>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown-content" id="dropdown-content">
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-staff-department' key%}">
+							<a>Добавить сотрудников</a>
+						</div>
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'paste' key%}" data-type="department">
+							<a>Вставить сотрудников</a>
+						</div>
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'change-department' key%}">
+							<a>Изменить параметры</a>
+						</div>
+						<div class="dropdown-content-item" id="dropdown-delete" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-department' key%}">
+							<a>Удалить</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if value.0 == "group" %}
+			{% if value.3 == "clicked" %}
+			<div class="{{ value.1 }} clicked" id={{ key }} data-target="create" data-url="{% url 'group-create' key %}">
+			{% else %}
+			<div class="{{ value.1 }}" id={{ key }} data-target="create" data-url="{% url 'group-create' key %}">
+			{% endif %}
+				<div class="list-item-container">
+					<div class="drop">
+						{% if value.3 == "clicked" %}
+						<img class="img" id="drop-ico" src="{% static 'ico/drop-open.png' %}"></img>
+						{% else %}
+						<img class="img" id="drop-ico" src="{% static 'ico/drop-close.png' %}"></img>
+						{% endif %}
+					</div>
+					<div class="group-name">
+						<a>{{ value.2 }}</a>
+					</div>
+					<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-group' key %}">
+						<img class="img" src="{% static 'ico/add.png' %}"></img>
+					</div>
+					<div class="menu">
+						<img class="img" id="menu-button" src="{% static 'ico/menu.png' %}"></img>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown-content" id="dropdown-content">
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-staff-group' key%}">
+							<a>Добавить сотрудников</a>
+						</div>
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'paste' key%}" data-type="group">
+							<a>Вставить сотрудников</a>
+						</div>
+						<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'change-group' key%}">
+							<a>Изменить параметры</a>
+						</div>
+						<div class="dropdown-content-item" id="dropdown-delete" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-group' key%}">
+							<a>Удалить</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if value.0 == "user" %}
+			<div class="{{ value.1 }}" data-unionid="{{ value.6 }}">
+				<div class="bio" data-toggle="modal" data-target="#modal-window" data-url="{% url 'modal' key%}">
+					<div class="bio-container">
+						<div class="bio-avatar">
+							<img src="{{ value.4 }}"></img>
+						</div>
+						<div class="bio-name">
+							<a>{{ value.2 }}</a>
+						</div>
+						<div class="bio-email">
+							<a>{{ value.3 }}</a>
+						</div>
+					</div>
+					{% if value.5 == "department" %}
+						<div class="del" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-department-staff' value.6%}" data-staff="{{ key }}">
+							<img class="img" src="{% static 'ico/trash.png' %}"></img>
+						</div>
+					{% endif %}
+					{% if value.5 == "group" %}
+						<div class="del" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-group-staff' value.6%}" data-staff="{{ key }}">
+							<img class="img" src="{% static 'ico/trash.png' %}"></img>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endfor %}

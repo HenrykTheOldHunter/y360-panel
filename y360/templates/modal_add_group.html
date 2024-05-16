@@ -1,0 +1,49 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_add_group.js' %}"></script>
+{% endblock %}
+
+<div class="modal-title">
+    <a>Создать группу</a>
+</div>
+<div class="cards">
+    <div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Название</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-check-add" type="text" id="group-name-add" name="group-name-add" value=""/>
+            </div>
+        </div>
+	</div>
+	<div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Описание</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-not-check-add" type="text" id="group-description-add" name="group-description-add" value=""/>
+            </div>
+        </div>
+	</div>
+	<div class="card-item">
+        <div class="card-item-block">
+            <div class="card-item-title">
+                <a>Рассылка</a>
+            </div>
+            <div class="card-item-body">
+                <input class="input-not-check-add" type="text-add" id="group-label-add" name="group-label-add" value=""/>
+				<a>{{ domain }}</a>
+            </div>
+        </div>
+	</div>
+	<div class="card-item-block" id="modal-button">
+        <div class="card-item-body">
+            <button class="modal-add-group-button" id="modal-add-group-button" data-url="{% url 'add-group-data' id %}">Создать</button>
+        </div>
+    </div>
+	<div id="error-block">
+	</div>
+</div>

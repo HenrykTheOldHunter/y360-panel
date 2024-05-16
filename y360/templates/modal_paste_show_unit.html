@@ -1,0 +1,55 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+{% endblock %}
+<div class="card-item">
+	{% if empty %}
+	<div class="card-item-block">
+		<div class="card-item-title">
+			{% if type == "department" %}
+				<a>Подразделение пустое</a>
+			{% else %}
+				<a>Группа пустая</a>
+			{% endif %}
+		</div>
+	</div>
+	{% endif %}
+	{% for user in users %}
+	<div class="card-item-block" id="staff-block">
+		<div class="modal-bio picked" id="{{ user.0 }}">
+			<div class="modal-bio-avatar">
+				<img src="{{ user.3 }}"></img>
+			</div>
+			<div class="modal-bio-name">
+				<a>{{ user.1 }}</a>
+			</div>
+			<div class="modal-bio-email">
+				<a>{{ user.2 }}</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	{% for userAlready in usersAlready %}
+	<div class="card-item-block" id="staff-block">
+		<div class="modal-bio-already" id="{{ userAlready.0 }}">
+			<div class="modal-bio-avatar">
+				<img src="{{ userAlready.3 }}"></img>
+			</div>
+			<div class="modal-bio-name">
+				<a>{{ userAlready.1 }}</a>
+			</div>
+			<div class="modal-bio-email">
+				<a>{{ userAlready.2 }}</a>
+			</div>
+			<div>
+				{% if forType == "department" %}
+					<a>(Пользователь уже состоит в этом подразделении)</a>
+				{% else %}
+					<a>(Пользователь уже состоит в этой группе)</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>

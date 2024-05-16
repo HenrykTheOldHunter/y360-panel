@@ -1,0 +1,16 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_delete_group.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Удалить группу "{{ group }}"? Будут удалены входящие сотрудники и подгруппы.</a>
+</div>
+<div class="buttons">
+	<div class="yes-button">
+		<button id="delete-button-result" data-url="{% url 'delete-group-data' id %}">>Да</button>
+	</div>
+	<div class="return-button">
+		<button id="return-button" data-url="{% url 'groups' %}">Отмена</button>
+	</div>	
+</div>

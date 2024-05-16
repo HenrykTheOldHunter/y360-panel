@@ -1,0 +1,20 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_delete_department.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Удалить подразделение "{{ department }}"?</a>
+</div>
+<div class="buttons">
+	<div class="yes-button">
+		<button id="delete-button-result" data-url="{% url 'delete-department-data' id %}">>Да</button>
+	</div>
+	<div class="return-button">
+		<button id="return-button" data-url="{% url 'department' %}">Отмена</button>
+	</div>	
+	<div class="errord">
+		<a id="error-title">Ошибка!</a>
+		<a>Нельзя удалить подразделение, пока в нём есть сотрудники или другие подразделения.</a>
+	</div>
+</div>

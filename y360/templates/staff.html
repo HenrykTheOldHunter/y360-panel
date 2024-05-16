@@ -1,0 +1,83 @@
+{% extends "generic.html" %}
+
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/staff.css' %}" />
+<link rel="stylesheet" href="{% static 'css/modal.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_staff.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/search_staff.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="name">
+    <h1>Staff list</h1>
+</div>
+<div class="count">
+    <h3>Количество сотрудников: {{ count }}</h3>
+</div>
+<div class="search">
+    <input type="text" id="search-input" onkeyup="search()" placeholder="Поиск..." />
+</div>
+<div class="add-button">
+    <button data-toggle="modal" data-target="#modal-add-staff" data-url="{% url 'add-staff' %}">Добавить</button>
+</div>
+<div class="list">
+    {% for user in info %}
+    <div class="list-item" href="" data-toggle="modal" data-target="#modal-window" data-url="{% url 'modal' user.0 %}">
+        <ul class="list-item-ul" id="list-ul">
+            <div class="list-item-li" id="list-li">
+                <li class="first"><a>{{ user.0 }}</a></li>
+            </div>
+            <div class="list-item-li" id="list-li">
+                <li><a>{{ user.1 }}</a></li>
+            </div>
+            <div class="list-item-li" id="list-li">
+                <li><a>{{ user.2 }}</a></li>
+            </div>
+            <div class="list-item-li-end">
+                <img src="{{ user.3 }}"></img>
+            </div>
+            <div class="list-item-pointer"></div>
+         </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block modal %}
+<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="connector">
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-add-staff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="connector">
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

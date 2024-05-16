@@ -1,0 +1,51 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_add_staff_unions.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+    <a>Добавить сотрудников</a>
+</div>
+<div class="cards">
+    <div class="card-item">
+		<div class="card-item-block">
+			<div class="card-item-body">
+				<input type="text" id="search-input" placeholder="Поиск..." />
+			</div>
+		</div>
+		<div class="union-container">
+			{% if empty %}
+			<div class="card-item-block">
+				<div class="card-item-title">
+					<a>Нет свободных сотрудников</a>
+				</div>
+			</div>
+			{% endif %}
+			{% for user in users %}
+			<div class="card-item-block" id="staff-block">
+				<div class="modal-bio" id="{{ user.0 }}">
+					<div class="modal-bio-avatar">
+						<img src="{{ user.3 }}"></img>
+					</div>
+					<div class="modal-bio-name">
+						<a>{{ user.1 }}</a>
+					</div>
+					<div class="modal-bio-email">
+						<a>{{ user.2 }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="card-item-block" id="modal-button">
+			<div class="card-item-body">
+				<button class="modal-add-staff-unions-button" id="modal-add-staff-unions-button" data-url="{% url 'add-staff-group-data' id %}">Добавить</button>
+			</div>
+		</div>
+		<div class="error-text"></div>
+		<div class="message">
+			<a>Пожалуйста, подождите... <img class="img" src="{% static 'ico/loading.gif' %}"></img></a>
+		</div>
+    </div>
+</div>

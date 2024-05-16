@@ -1,0 +1,16 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal_delete_unions_staff.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Удалить сотрудника "{{ user }}" из подразделения "{{ department }}"?</a>
+</div>
+<div class="buttons">
+	<div class="yes-button">
+		<button id="delete-button-result" data-url="{% url 'delete-department-staff-data' departmentId%}" data-staff="{{ staffId }}">>Да</button>
+	</div>
+	<div class="return-button">
+		<button id="return-button" data-url="{% url 'department' %}">Отмена</button>
+	</div>	
+</div>

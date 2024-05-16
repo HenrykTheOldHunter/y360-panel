@@ -1,0 +1,16 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/logout_confirm.js' %}"></script>
+{% endblock %}
+<div class="modal-title">
+	<a>Выйти из аккаунта?</a>
+</div>
+<div class="buttons">
+	<div class="yes-button">
+		<button id="confirm-button" data-url="{% url 'logout-wire' %}">>Да</button>
+	</div>
+	<div class="return-button">
+		<button id="return-button">Отмена</button>
+	</div>	
+</div>

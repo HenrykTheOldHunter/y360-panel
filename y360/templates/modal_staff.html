@@ -1,0 +1,60 @@
+{% load static %}
+{% block scripts %}
+{% load static %}
+<script id="modal_staff_buttons" type="text/javascript" src="{% static 'js/modal_staff_buttons.js' %}"></script>
+{% endblock %}
+<div class="avatar">
+	<img src="{{ avatar }}"></img>
+</div>
+<div class="modal-name">
+	<a>{{ name }}</a>
+</div>
+<div class="cards">
+	<div class="card">
+	   <div class="card-item">
+		   <div class="card-title">
+			   <a><b>Подразделение</b></a>
+		   </div>
+		   <div class="card-body">
+			   <a>{{ department }}</a>
+		   </div>
+	   </div>
+	</div>
+	<div class="card">
+	   <div class="card-item">
+		   <div class="card-title">
+			  <a><b>Группы</b></a>
+		   </div>
+		   <div class="card-body">
+			   {% if groups %}
+				   {% for group in groups %}
+				   <a>{{ group }}</a>
+				   {% endfor %}
+			   {% else %}
+				   <a>Нет групп</a>
+			   {% endif %}
+		   </div>
+	   </div>
+	</div>
+	<div class="card">
+	   <div class="card-item">
+		   <div class="card-title">
+			   <a><b>Роль</b></a>
+		   </div>
+		   <div class="card-body">
+			   <a>{{ role }}</a>
+		   </div>
+	   </div>
+	</div>
+	<div class="buttons">
+		<div class="change-button">
+			<button id="change-button" data-url="{% url 'change-password' id %}">Сменить пароль</button>
+		</div>
+		<div class="drop-button">
+			<button id="drop-button"data-url="{% url 'drop-2fa' id %}">Сбросить телефон для 2FA</button>
+		</div>
+		<div class="enable-button">
+			<button id="enable-button" data-url="{% url 'enable' id %}">Блокировка</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/multilevel_list.css' %}" />
+{% endblock %}
+{% block scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/mark.js' %}"></script>
+{% endblock %}
+{% for group in groups %}
+    <div class="{{ level }}" id="{{ group.0 }}" data-target="create" data-url="{% url 'group-create' group.0 %}">
+	    <div class="list-item-container">
+			<div class="drop">
+				<img class="img" id="drop-ico" src="{% static 'ico/drop-close.png' %}"></img>
+			</div>
+			<div class="group-name">
+				<a>{{ group.1 }}</a>
+			</div>
+			<div class="add" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-group' group.0 %}">
+				<img class="img" src="{% static 'ico/add.png' %}"></img>
+			</div>
+			<div class="menu">
+				<img class="img" id="menu-button" src="{% static 'ico/menu.png' %}"></img>
+			</div>
+		</div>
+		<div class="dropdown">
+			<div class="dropdown-content" id="dropdown-content">
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'add-staff-group' group.0%}">
+					<a>Добавить сотрудников</a>
+				</div>
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'paste' group.0%}" data-type="group">
+					<a>Вставить сотрудников</a>
+				</div>
+				<div class="dropdown-content-item" data-toggle="modal" data-target="#modal-window" data-url="{% url 'change-group' group.0%}">
+					<a>Изменить параметры</a>
+				</div>
+				<div class="dropdown-content-item" id="dropdown-delete" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-group' group.0%}">
+					<a>Удалить</a>
+				</div>
+			</div>
+		</div>
+    </div>
+{% endfor %}
+{% for user in users %}
+<div class="{{ level }}-user" data-unionid="{{ user.4 }}">
+    <div class="bio" data-toggle="modal" data-target="#modal-window" data-url="{% url 'modal' user.0%}">
+		<div class="bio-container">
+			<div class="bio-avatar">
+				<img src="{{ user.3 }}"></img>
+			</div>
+			<div class="bio-name">
+				<a>{{ user.1 }}</a>
+			</div>
+			<div class="bio-email">
+				<a>{{ user.2 }}</a>
+			</div>
+		</div>
+		<div class="del" data-toggle="modal" data-target="#modal-window" data-url="{% url 'delete-group-staff' user.4%}" data-staff="{{ user.0 }}">
+			<img class="img" src="{% static 'ico/trash.png' %}"></img>
+		</div>
+	</div>
+</div>
+{% endfor %}
